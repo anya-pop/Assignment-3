@@ -1,24 +1,26 @@
 class Account:
-    _accountNumber = 0
-    _accountHolderName = ''
-    _rateOfinterest = 0
-    _currentBalance = 4
-    def __init__(self):
-        pass
-    def getAccountNumber(_accountNumber):
-        return _accountNumber
-    def getAccountHolderName(_accountHolderName):
-        return _accountHolderName
-    def getRateOfInterest(_rateOfinterest):
-        return _rateOfinterest
-    def getCurrentBalance(_currentBalance):
-        return _currentBalance
+    def __init__(self, num, name, interest, balance, sav, chq):
+        self.num = num
+        self.name = name
+        self.interest = interest
+        self.balance = balance
+        self.sav=sav
+        self.chq=chq
+    def getAccountNumber(num):
+        return num
+    def getAccountHolderName(name):
+        return name
+    def getRateOfInterest(interest):
+        return interest
+    def getCurrentBalance(balance):
+        return balance
     def deposit():
         pass
     def withdraw():
         pass
-    
-class SavingsAccount(Account):
+
+
+class SavingsAccount(Account): #as the savings and chequing account ARE types of account, inheritence is used.
     _minimumBalance = 0
     def __init__(self):
         pass
@@ -30,17 +32,21 @@ class ChequingAccount(Account):
     def withdraw():
         pass
 
-class Bank(Account):
+class Bank:
     _bankName = ''
     def openAccount():
         pass
     def SearchAccount():
         pass
 
-class Program(Bank):
+class Program:
     def run():
         pass
-    def ShowMainMenu():
-        pass
+    @classmethod #decorator to call the method easier
+    def ShowMainMenu(self):
+        print("Welcome to GWO bank! \n Choose your option:") #welcome message, shows the main menu
+        #this methos needs to call the method from class Bank
     def ShowAccountMenu():
         pass
+
+Program.ShowMainMenu()
