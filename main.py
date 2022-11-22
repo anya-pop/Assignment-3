@@ -1,3 +1,4 @@
+import site
 class Account:
     def __init__(self, num, name, interest, balance, sav, chq):
         self.num = num
@@ -44,7 +45,13 @@ class Program:
         pass
     @classmethod #decorator to call the method easier
     def ShowMainMenu(self):
-        print("Welcome to GWO bank! \n Choose your option:") #welcome message, shows the main menu
+        print("Welcome to GWO bank! \nYou have the following options:") #welcome message, shows the main menu
+        print("Select Account\nExit")
+        mmchoice = input("Enter your option here:").lower()
+        if mmchoice == "exit":
+            exit()
+        else:
+            Bank.SearchAccount() #USES method from the bank class
         #this methos needs to call the method from class Bank
     def ShowAccountMenu():
         pass
