@@ -41,9 +41,6 @@ class Bank:
         pass
 
 class Program:
-    def run():
-        pass
-    @classmethod #decorator to call the method easier
     def ShowMainMenu(self):
         print("Welcome to GWO bank! \nYou have the following options:") #welcome message, shows the main menu
         print("Select Account\nExit")
@@ -52,8 +49,23 @@ class Program:
             exit()
         else:
             Bank.SearchAccount() #USES method from the bank class
-        #this methos needs to call the method from class Bank
     def ShowAccountMenu():
-        pass
+        print("This is your account menu. \nYou have the following options:") #presents account information/menu
+        print("Check Balance - press 1\nDeposit - press 2\nWithdraw - press 3\nExit Account - press 4")
+        amchoice = input("Enter your option here:").lower()
+        while amchoice != '1' and amchoice != '2' and amchoice != '3' and amchoice != '4':
+            amchoice = input("Please only enter numbers from 1 to 4:")
+        if amchoice == '1':
+            Account.getCurrentBalance()
+        elif amchoice == '2':
+            Account.deposit()
+        elif amchoice == '3':
+            Account.withdraw()
+        elif amchoice == '4':
+            Program.ShowMainMenu()
+    @classmethod #decorator to call the method easier
+    def run():
+        Program.ShowMainMenu()
 
-Program.ShowMainMenu()
+
+Program.ShowAccountMenu()
