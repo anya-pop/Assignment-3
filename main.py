@@ -33,16 +33,17 @@ class ChequingAccount(Account):
 
 class Bank:
     _bankName = 'GWO'
-    def names():
-        anya = Account(1234567, 'Anya', 4, SavingsAccount(1020),ChequingAccount(500)) #instances of the class Account
+    def SearchAccount(self):
+        anya = Account(1234567, 'Anya', 4, 1020,500,78) #instances of the class Account
         iman = Account(2345678, 'Iman', 4, SavingsAccount(3000),ChequingAccount(1200))
         aleks = Account(3456789, 'Aleks', 4, SavingsAccount(300),ChequingAccount(3000))
         audrey = Account(4567890, 'Audrey', 4, SavingsAccount(4000),ChequingAccount(3000))
         misha = Account(5678901, 'Misha', 4, SavingsAccount(4000),ChequingAccount(1000))
         ali = Account(6789012, 'Ali', 4, SavingsAccount(500),ChequingAccount(678))
-        list = [anya, iman, aleks, audrey, misha, ali] #instances collected in a list for easier creation of the method SearchAccount
-    def SearchAccount(self):
-        number = input("Enter the number of the account you're looking for:")
+        list = [anya, iman, aleks, audrey, misha, ali]                                #instances collected in a list for easier creation of the method SearchAccount
+        num = input("Enter the number of the account you're looking for:")
+        for num in list:
+            Account.getAccountNumber(num)
         
 
 class Program:
