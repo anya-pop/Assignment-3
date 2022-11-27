@@ -23,18 +23,22 @@ class Account:
 
 
 class SavingsAccount(Account): #as the savings and chequing account ARE types of account, inheritence is used.
-    def __init__(self, num, name, interest, balance, _minimumBalance = 1000):
+    def __init__(self, num, name, interest, balance, _minimumBalance = 1000.0):
         self._minimumBalance = _minimumBalance
         super().__init__(num, name, interest, balance)
-    def withdraw(self, amount):
-        self.balance = self.balance -amount
-        while self.balance < 1000:
-            amount = int(input("The amount you want to withdraw will bring your balance below minimum. Try again:"))
+    def withdraw(self, amount,_minimumBalance = 1000.0):
+        result = self.balance -amount
+        while result < _minimumBalance:
+            result = result+amount    #have to add the amount back to bring the result variable to its starting value
+            amount = float(input("The amount you want to withdraw will bring your balance below minimum. Try again:"))
+        self.balance = self.balance - amount
         print("Your balance is now:")
         return self.balance
 
 class ChequingAccount(Account):
-    _overdraftAllowed = 0
+    def __init__(self,_overdraftAllowed = 0):
+        self._overdraftAllowed = _overdraftAllowed
+        super().__init__(num, name, interest, balance)
     def withdraw():
         pass
 
@@ -51,12 +55,12 @@ class Bank:
         list2 = []
         for a in list:
             n = a.getAccountNumber()
-            n = int(n)
+            n = float(n)
             list2.append(n)
         print(list2)
         while number not in list2: #ensures an account with this number exists
             print("This is not a correct number.")
-            number = int(input("Try again:"))
+            number = float(input("Try again:"))
         if number == 1234567:
             account = account1
             print("This is Anya's chequing account\n")
@@ -96,7 +100,7 @@ class Program:
             if mmchoice == "exit":
                exit()
             elif mmchoice == "select account" or "s":
-                number = int(input("Enter the number of the account you're looking for:"))
+                number = float(input("Enter the number of the account you're looking for:"))
                 #USES method from the bank class
                 Program.ShowAccountMenu(banking.SearchAccount(number))
             else:
@@ -110,15 +114,15 @@ class Program:
             except:
                 pass
             if amchoice != '1' and amchoice != '2' and amchoice != '3' and amchoice != '4':
-                amchoice = input("Please only enter numbers from 1 to 4:")
+                print("Please only enter numbers from 1 to 4:")
             elif amchoice == '1':
                 print("Your current balance is:")
                 print(Account.getCurrentBalance(account))
             elif amchoice == '2':
-                amount = int(input("You chose to deposit. Enter the amount:"))
+                amount = float(input("You chose to deposit. Enter the amount:"))
                 print(account.deposit(amount))
             elif amchoice == '3':
-                amount = int(input("You chose to withdraw. Enter the amount:"))
+                amount = float(input("You chose to withdraw. Enter the amount:"))
                 print(account.withdraw(amount))
             elif amchoice == '4':
                 Program.ShowMainMenu()
