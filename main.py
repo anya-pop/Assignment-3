@@ -25,7 +25,7 @@ class Account:
 class SavingsAccount(Account): #as the savings and chequing account ARE types of account, inheritence is used.
     def __init__(self, num, name, interest, balance, _minimumBalance = 1000.0):
         self._minimumBalance = _minimumBalance
-        super().__init__(num, name, interest, balance)
+        super().__init__(num, name, interest, balance)     
     def withdraw(self, amount,_minimumBalance = 1000.0):
         result = self.balance -amount
         while result < _minimumBalance:
@@ -36,31 +36,37 @@ class SavingsAccount(Account): #as the savings and chequing account ARE types of
         return self.balance
 
 class ChequingAccount(Account):
-    def __init__(self,_overdraftAllowed = 0):
+    def __init__(self,num, name, interest, balance,_overdraftAllowed = -500.00):
         self._overdraftAllowed = _overdraftAllowed
         super().__init__(num, name, interest, balance)
-    def withdraw():
-        pass
+    def withdraw(self, amount,_overdraftAllowed = -500.00):
+        result = self.balance -amount
+        while result < _overdraftAllowed:
+            result = result+amount    #have to add the amount back to bring the result variable to its starting value
+            amount = float(input("The amount you want to withdraw will bring your balance below minimum. Try again:"))
+        self.balance = self.balance - amount
+        print("Your balance is now:")
+        return self.balance
 
 class Bank:
     _bankName = 'GWO'
     def SearchAccount(self, number):
         account1 = ChequingAccount(1234567, 'Anya', 4, 1020) #instances of the class Account
-        account2 = SavingsAccount(2345678, 'Iman', 4, 3000)
+        account2 = SavingsAccount(2345678, 'Iman', 2, 3000)
         account3 = ChequingAccount(3456789, 'Aleks', 4, 300)
-        account4 = SavingsAccount(4567890, 'Audrey', 4, 4000)
+        account4 = SavingsAccount(4567890, 'Audrey', 6, 4000)
         account5 = SavingsAccount(5678901, 'Misha', 4, 4000)
         account6 = ChequingAccount(6789012, 'Ali', 4, 500)
         list = [account1, account2, account3, account4, account5, account6]                                #instances collected in a list for easier creation of the method SearchAccount
         list2 = []
         for a in list:
             n = a.getAccountNumber()
-            n = float(n)
+            n = int(n)
             list2.append(n)
-        print(list2)
+        print(list2,"\n\n")
         while number not in list2: #ensures an account with this number exists
             print("This is not a correct number.")
-            number = float(input("Try again:"))
+            number = int(input("Try again:"))
         if number == 1234567:
             account = account1
             print("This is Anya's chequing account\n")
@@ -90,24 +96,24 @@ class Bank:
 class Program:
     def ShowMainMenu():
         banking = Bank() #creating instance of the class bank  
-        print("Welcome to GWO bank! \nYou have the following options:") #welcome message, shows the main menu
+        print("\nMain Menu \n\nWelcome to GWO bank! \nYou have the following options:") #welcome message, shows the main menu
         print("Select Account\nExit")
         while True:
             try:
                 mmchoice = input("Enter your option here:").lower()
             except: 
                 pass
-            if mmchoice == "exit":
+            if mmchoice == "exit" or mmchoice == "e":
                exit()
-            elif mmchoice == "select account" or "s":
-                number = float(input("Enter the number of the account you're looking for:"))
+            elif mmchoice == "select account" or mmchoice == "select" or mmchoice == "s":
+                number = int(input("Enter the number of the account you're looking for:"))
                 #USES method from the bank class
                 Program.ShowAccountMenu(banking.SearchAccount(number))
             else:
                 print("\nInvalid option, try again.\nSelect Account / Exit\n")
     def ShowAccountMenu(account):
-        print("This is your account menu. \nYou have the following options:") #presents account information/menu
-        print("Check Balance - press 1\nDeposit - press 2\nWithdraw - press 3\nExit Account - press 4")
+        print("Account Menu\n \nYou have the following options:") #presents account information/menu
+        print("Check Balance - press 1\nDeposit - press 2\nWithdraw - press 3\nExit Account - press 4\n")
         while True:
             try:
                 amchoice = input("Enter your option here:").lower()
