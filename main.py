@@ -91,16 +91,20 @@ class Bank:
             print("This is Ali's chequing account")
             account = account6
             return account
-        
 
 class Program:
-    def ShowMainMenu():
+    def positivefloat(obj): #method that checks if the inputted value is a real number greater than zero
+        while obj<=0:
+            obj = float(input("The amount has to be positive:"))
+        if obj>0:
+            return obj
+    def ShowMainMenu():    #MAIN MENU
         banking = Bank() #creating instance of the class bank  
         print("\nMain Menu \n\nWelcome to GWO bank! \nYou have the following options:") #welcome message, shows the main menu
         print("Select Account\nExit")
         while True:
             try:
-                mmchoice = input("Enter your option here:").lower()
+                mmchoice = input("Enter your option here:").lower() #makes the input always lowercase
             except: 
                 pass
             if mmchoice == "exit" or mmchoice == "e":
@@ -111,7 +115,7 @@ class Program:
                 Program.ShowAccountMenu(banking.SearchAccount(number))
             else:
                 print("\nInvalid option, try again.\nSelect Account / Exit\n")
-    def ShowAccountMenu(account):
+    def ShowAccountMenu(account): #ACCOUNT MENU
         print("Account Menu\n \nYou have the following options:") #presents account information/menu
         print("Check Balance - press 1\nDeposit - press 2\nWithdraw - press 3\nExit Account - press 4\n")
         while True:
@@ -125,11 +129,11 @@ class Program:
                 print("Your current balance is:")
                 print(Account.getCurrentBalance(account))
             elif amchoice == '2':
-                amount = float(input("You chose to deposit. Enter the amount:"))
-                print(account.deposit(amount))
+                amount = float(input("You chose to deposit. Enter the amount:"))                                                   
+                print(account.deposit(Program.positivefloat(amount)))
             elif amchoice == '3':
                 amount = float(input("You chose to withdraw. Enter the amount:"))
-                print(account.withdraw(amount))
+                print(account.withdraw(Program.positivefloat(amount)))
             elif amchoice == '4':
                 Program.ShowMainMenu()
     def run():
