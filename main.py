@@ -63,8 +63,7 @@ class Bank:
             n = a.getAccountNumber()
             n = int(n)
             list2.append(n)
-        print(list2,"\n\n")
-        while number not in list2: #ensures an account with this number exists
+        while number not in list2:                             #ensures an account with this number exists
             print("This is not a correct number.")
             number = int(input("Try again:"))
         if number == 1234567:
@@ -110,21 +109,22 @@ class Program:
             if mmchoice == "exit" or mmchoice == "e":
                exit()
             elif mmchoice == "select account" or mmchoice == "select" or mmchoice == "s":
-                number = int(input("Enter the number of the account you're looking for:"))
+                print("[1234567, 2345678, 3456789, 4567890, 5678901, 6789012]")
+                number = int(input("Enter the number of the account you're looking for:\n"))
                 #USES method from the bank class
                 Program.ShowAccountMenu(banking.SearchAccount(number))
             else:
                 print("\nInvalid option, try again.\nSelect Account / Exit\n")
     def ShowAccountMenu(account): #ACCOUNT MENU
         print("Account Menu\n \nYou have the following options:") #presents account information/menu
-        print("Check Balance - press 1\nDeposit - press 2\nWithdraw - press 3\nExit Account - press 4\n")
+        print("[1] Check Balance\n[2] Deposit\n[3] Withdraw\n[4] Exit Account\n")
         while True:
             try:
                 amchoice = input("Enter your option here:").lower()
             except:
                 pass
             if amchoice != '1' and amchoice != '2' and amchoice != '3' and amchoice != '4':
-                print("Please only enter numbers from 1 to 4:")
+                print("Please only enter numbers from 1 to 4.\n[1] Check Balance\n[2] Deposit\n[3] Withdraw\n[4]Exit Account")
             elif amchoice == '1':
                 print("Your current balance is:")
                 print(Account.getCurrentBalance(account))

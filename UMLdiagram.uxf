@@ -1,0 +1,35 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>550</x><y>0</y><w>390</w><h>240</h></coordinates><panel_attributes>_Account_
+--
+-num: int
+-name: str
+-interest: float
+-balance: float
+--
+#__init__(num: int,name: str,interest: float,balance: float)
++getAccountNumber():int
++getAccountHolderName():str
++getRateOfInterest():int
++getCurrentBalance():float
++deposit (amount:float):float
++withdraw (amount:float):float</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>220</x><y>430</y><w>470</w><h>80</h></coordinates><panel_attributes>_SavingsAccount_
+--
+-_minimumBalance: float
+--
++__init__(num: int,name: str,interest: float,balance: float, _minimumBalance: float)
+#withdraw(amount: float,_minimumBalance: float):float
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>780</x><y>430</y><w>470</w><h>90</h></coordinates><panel_attributes>_ChequingAccount_
+--
++_overdraftAllowed:float
+--
++__init__(num: int,name: str,interest: float,balance: float, _overdraftAllowed:float)
+#withdraw (amount:float, _overdraftAllowed:float):float</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>660</y><w>180</w><h>80</h></coordinates><panel_attributes>_Bank_
+--
+-bankName: str
+--
++SearchAccount(number:int)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>510</x><y>920</y><w>440</w><h>180</h></coordinates><panel_attributes>_Program_
+--
+#positivefloat(obj:float):float
++ShowMainMenu()
++ShowAccountMenu()
++ShowAccountMenu(accoun</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>230</y><w>300</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;120;280;120;280;200</additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>230</y><w>280</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>260;10;260;120;10;120;10;200</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>500</y><w>300</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>280;160;280;110;10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>510</y><w>320</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;150;10;100;300;100;300;10</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>730</y><w>30</w><h>210</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;190;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>510</y><w>430</w><h>430</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;410;10;310;410;310;410;10</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>500</y><w>470</w><h>440</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>450;420;450;320;10;320;10;10</additional_attributes></element></diagram>
